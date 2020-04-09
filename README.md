@@ -1,6 +1,6 @@
 # t30
 
-A new Flutter project.
+App aimed for swimming coaches. Here is possible to apply T30 test and measure the performance at a fixed distance.
 
 ## Getting Started
 
