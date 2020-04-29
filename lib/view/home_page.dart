@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:t30/util/hex_color.dart';
-import 'package:t30/view/login/login_page.dart';
+import 'package:t30/util/my_color.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -30,13 +29,22 @@ class _HomePageState extends State<HomePage> {
               Container(
                   width: double.infinity,
                   child: RaisedButton(
-                    color: HexColor('242424'),
-                    textColor: HexColor('fcb849'),
+                    color: MyColor.primaryColor(),
+                    textColor: MyColor.accentColor(),
                     child: Text('Abrir Login'),
                     onPressed: () {
                       print('Button pressed!!');
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => LoginPage()));
+                    },
+                  )),
+              Container(
+                  width: double.infinity,
+                  child: RaisedButton(
+                    color: MyColor.primaryColor(),
+                    textColor: MyColor.accentColor(),
+                    child: Text('Cadastrar Professor'),
+                    onPressed: () {
+                      print('Cadastrar Professor Button pressed!!');
+//                      Navigator.push(context,MaterialPageRoute(builder: (context) => LoginPage()));
                     },
                   )),
             ],
@@ -44,6 +52,5 @@ class _HomePageState extends State<HomePage> {
         ],
       )),
     );
-    ;
   }
 }

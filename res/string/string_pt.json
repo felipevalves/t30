@@ -1,0 +1,12 @@
+{
+  "hello":"Olá",
+  "title":"Hello world App",
+  "login": "Entra ai",
+  "email":"E-mail",
+  "email_required":"E-mail é obrigatório",
+  "signup": "Criar conta",
+  "password":"Senha",
+  "password_required":"Senha é obrigatório",
+  "password_forgot":"Esqueci minha senha",
+  "go":"Ir"
+}

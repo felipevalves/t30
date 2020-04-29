@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
 import 'package:t30/util/hex_color.dart';
 
-import 'home_page.dart';
+import 'login/login_page.dart';
 
 class MySplashScreen extends StatelessWidget {
 
@@ -14,7 +14,7 @@ class MySplashScreen extends StatelessWidget {
         SplashScreen(
           seconds: 5,
           backgroundColor: HexColor('242424'),
-          navigateAfterSeconds: HomePage(),
+          navigateAfterSeconds: LoginPage(),
           loaderColor: Colors.transparent,
         ),
         Container(

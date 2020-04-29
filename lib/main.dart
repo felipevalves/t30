@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'util/hex_color.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:t30/util/my_color.dart';
 import 'view/splash_screen.dart';
+import 'package:t30/generated/i18n.dart';
 
 void main() => runApp(MyApp());
 
@@ -17,15 +19,19 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'T 30',
       theme: ThemeData(        
-//          primaryColor: Color.fromARGB(255, 36, 36, 36),
-          primaryColor: HexColor('242424'),
-          primaryColorDark: HexColor('e8e8e8'),
-          accentColor:  HexColor('fcb849')
+          primaryColor: MyColor.primaryColor(),
+          primaryColorDark: MyColor.primaryColorDark(),
+          accentColor:  MyColor.accentColor()
       ),
+      localizationsDelegates: [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate
+      ],
+      supportedLocales: S.delegate.supportedLocales,
+      locale: Locale('en'),
       home:  MySplashScreen(),
-//      routes: <String, WidgetBuilder>{
-//        '/HomePage': (BuildContext context) => new Home(title: 'T 30 Home Page')
-//      },
+// 
     );
   }
 }

@@ -1,30 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:t30/util/my_color.dart';
 
-class LoginPage extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => _LoginPageState();
-}
+import 'Login_form.dart';
 
-class _LoginPageState extends State<LoginPage> {
+class LoginPage extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: new AppBar(
-        title: new Text("Login"),
-        automaticallyImplyLeading: true,
-      ),
-      body: SingleChildScrollView(
-        child: Container(
-              child: Column(
-                children: <Widget>[
-                  Image.asset('images/T30.png'),
-                  Text('E-mail'),
-                  Text('Senha'),
-                  Text('Senha 2'),
-                ],
-              )
+    return
+      Scaffold(
+          backgroundColor: MyColor.primaryColorDark(),
+          body: SingleChildScrollView(
+                child: Column(
+              children: <Widget>[
+                Container(
+                    height: MediaQuery.of(context).size.height * 0.55,
+                    decoration: BoxDecoration(
+                      color: MyColor.primaryColor(),
+                    ),
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 20, right: 20),
+                      child: Image.asset('images/t30_logo_2.png'),
+                    )),
+                 LoginForm(),
+              ],
+            ),
           ),
-      ),
-    );
+        );
   }
 }

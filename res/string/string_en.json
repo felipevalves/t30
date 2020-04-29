@@ -1,0 +1,12 @@
+{
+  "hello":"Hello",
+  "title":"Hello world App",
+  "login": "Sign in",
+  "email":"E-mail",
+  "email_required":"E-mail is required",
+  "signup": "Sign up",
+  "password":"Password",
+  "password_required":"Password is required",
+  "password_forgot":"Forgot password?",
+  "go":"Ir"
+}
