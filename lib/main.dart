@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate
       ],
       supportedLocales: S.delegate.supportedLocales,
-      locale: Locale('en'),
+      locale: Locale('pt'),
       home:  MySplashScreen(),
 // 
     );

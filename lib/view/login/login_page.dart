@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:t30/presenter/login/login_presenter.dart';
 import 'package:t30/util/my_color.dart';
 
-import 'Login_form.dart';
+import 'login_form.dart';
 
 class LoginPage extends StatelessWidget {
 
@@ -22,7 +23,7 @@ class LoginPage extends StatelessWidget {
                       margin: const EdgeInsets.only(left: 20, right: 20),
                       child: Image.asset('images/t30_logo_2.png'),
                     )),
-                 LoginForm(),
+                 LoginForm(LoginPresenterImpl()),
               ],
             ),
           ),
