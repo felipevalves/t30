@@ -1,28 +1,28 @@
 import 'package:flutter/widgets.dart';
 import 'package:t30/generated/i18n.dart';
-import 'package:t30/model/entity/login.dart';
-import 'package:t30/model/login/login_model.dart';
+import 'package:t30/model/data/db/entity/login.dart';
+import 'package:t30/model/model/login_model.dart';
 import 'package:t30/util/util.dart';
 import 'package:t30/view/login/login_view.dart';
 
 abstract class LoginPresenter {
+  set view(LoginView view) {}
 
-  set view(LoginView view){}
   loginServer(String email, String password) {}
+
   loginGoogle() {}
+
   loginFacebook() {}
 
-  String validateEmailText(String email){}
+  String validateEmailText(String email) {}
 }
 
 class LoginPresenterImpl implements LoginPresenter {
-
   LoginView _view;
   BuildContext _context;
   LoginModel _model;
 
-
-  LoginPresenterImpl(this._context){
+  LoginPresenterImpl(this._context) {
     _model = LoginModelImpl();
   }
 
@@ -33,15 +33,16 @@ class LoginPresenterImpl implements LoginPresenter {
 
   @override
   loginServer(String email, String password) {
-
     _view.showLoading();
-    _model.loginServer(Login(email: email, password: password));
-
-    Future.delayed(Duration(seconds: 2)).then((_) {
+    _model
+        .loginServer(Login(email: email, password: password))
+        .then((response) {
       _view.hideLoading();
-      _view.openHomePage();
-    });
 
+      if (response.statusCode == 200) {
+        _view.openHomePage();
+      }
+    });
   }
 
   String validateEmailText(String email) {
@@ -65,8 +66,4 @@ class LoginPresenterImpl implements LoginPresenter {
   loginGoogle() {
     _model.loginGoogle();
   }
-
-
 }
-
-
