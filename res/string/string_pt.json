@@ -9,5 +9,6 @@
   "password":"Senha",
   "password_required":"Senha é obrigatório",
   "password_forgot":"Esqueci minha senha",
+  "wait":"Aguarde...",
   "go":"Ir"
 }

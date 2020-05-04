@@ -9,5 +9,6 @@
   "password":"Password",
   "password_required":"Password is required",
   "password_forgot":"Forgot password?",
+  "wait":"Wait...",
   "go":"Ir"
 }

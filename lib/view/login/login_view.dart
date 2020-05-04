@@ -1,5 +1,7 @@
 
 abstract class LoginView {
-  printMessage(String message){}
+  openHomePage(){  }
+  showLoading(){}
+  hideLoading(){}
 }
 

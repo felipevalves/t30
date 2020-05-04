@@ -1,0 +1,4 @@
+//interface
+class DataManager{
+
+}

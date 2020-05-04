@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:progress_dialog/progress_dialog.dart';
 import 'package:t30/generated/i18n.dart';
-import 'package:t30/model/entity/login.dart';
 import 'package:t30/presenter/login/login_presenter.dart';
 import 'package:t30/util/my_color.dart';
-import 'package:t30/util/util.dart';
 
 import '../home_page.dart';
 import 'login_view.dart';
@@ -12,7 +11,10 @@ class LoginForm extends StatefulWidget {
 
   final LoginPresenter presenter;
 
-  LoginForm(this.presenter);
+
+  LoginForm(this.presenter){
+   print('LoginForm');
+  }
 
   @override
   State<StatefulWidget> createState() => LoginFormState();
@@ -23,7 +25,7 @@ class LoginFormState extends State<LoginForm> implements LoginView {
   final _formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-
+  ProgressDialog _progressDialog;
 
   @override
   void initState() {
@@ -32,38 +34,54 @@ class LoginFormState extends State<LoginForm> implements LoginView {
   }
 
   @override
+  void didUpdateWidget(LoginForm oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    this.widget.presenter.view = this;
+  }
+
+  @override
   void dispose() {
     emailController.dispose();
+    passwordController.dispose();
     super.dispose();
   }
 
   @override
-  void printMessage(String message) {
-    print(message);
+  void openHomePage() {
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
   }
 
-  String validateEmailText(String value) {
-    if (value.isEmpty) {
-      return S.of(context).email_required;
+  @override
+  hideLoading() {
+    if (_progressDialog.isShowing()) {
+      _progressDialog.hide();
     }
-
-    if (!Util.isEmailValid(value)) {
-      return S.of(context).email_invalid;
-    }
-
-    return null;
   }
 
-  void login() {
-    this.widget.presenter.login(Login(email: emailController.text, password: passwordController.text));
+  @override
+  showLoading() {
+    if (!_progressDialog.isShowing()) {
+      _progressDialog.show();
+    }
+  }
 
-    print('email: ' + emailController.text);
-//    Navigator.pushReplacement(context,
-//        MaterialPageRoute(builder: (context) => HomePage()));
+  void _buildProgressDialog(BuildContext context) {
+    _progressDialog = ProgressDialog(context);
+    _progressDialog.style(message: S.of(context).wait, backgroundColor: MyColor.accentColor());
+  }
+
+  String _validateEmailText(String value) {
+    return this.widget.presenter.validateEmailText(value);
+  }
+
+  void _login() {
+    this.widget.presenter.loginServer(emailController.text, passwordController.text);
   }
 
   @override
   Widget build(BuildContext context) {
+    _buildProgressDialog(context);
+
     return Form(
       key: _formKey,
       child: Column(
@@ -75,7 +93,7 @@ class LoginFormState extends State<LoginForm> implements LoginView {
                 textInputAction: TextInputAction.next,
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(labelText: S.of(context).email),
-                validator: validateEmailText),
+                validator: _validateEmailText),
           ),
           ListTile(
             leading: const Icon(Icons.lock),
@@ -99,7 +117,7 @@ class LoginFormState extends State<LoginForm> implements LoginView {
               textColor: MyColor.accentColor(),
               onPressed: () {
                 if (_formKey.currentState.validate()) {
-                  login();
+                  _login();
                 }
               },
             ),

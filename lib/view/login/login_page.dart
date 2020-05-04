@@ -23,7 +23,7 @@ class LoginPage extends StatelessWidget {
                       margin: const EdgeInsets.only(left: 20, right: 20),
                       child: Image.asset('images/t30_logo_2.png'),
                     )),
-                 LoginForm(LoginPresenterImpl()),
+                 LoginForm(LoginPresenterImpl(context)),
               ],
             ),
           ),

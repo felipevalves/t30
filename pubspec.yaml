@@ -22,6 +22,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   splashscreen: ^1.2.0
+  progress_dialog: ^1.1.0+1
 
 
   # The following adds the Cupertino Icons font to your application.
