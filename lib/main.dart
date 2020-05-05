@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'T 30',
+      title: S.of(context).system,
       theme: ThemeData(        
           primaryColor: MyColor.primaryColor(),
           primaryColorDark: MyColor.primaryColorDark(),

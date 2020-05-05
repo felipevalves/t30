@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:t30/generated/i18n.dart';
-import 'package:t30/model/data/db/entity/login.dart';
-import 'package:t30/model/model/login_model.dart';
+import 'package:t30/model/data/entity/login.dart';
+import 'package:t30/model/login_model.dart';
 import 'package:t30/util/util.dart';
 import 'package:t30/view/login/login_view.dart';
 
@@ -14,7 +14,7 @@ abstract class LoginPresenter {
 
   loginFacebook() {}
 
-  String validateEmailText(String email) {}
+  String validateEmailText(String email) { return null;}
 }
 
 class LoginPresenterImpl implements LoginPresenter {
@@ -34,15 +34,18 @@ class LoginPresenterImpl implements LoginPresenter {
   @override
   loginServer(String email, String password) {
     _view.showLoading();
-    _model
-        .loginServer(Login(email: email, password: password))
-        .then((response) {
+    _model.loginServer(Login(email: email, password: password)).then((response) {
       _view.hideLoading();
-
       if (response.statusCode == 200) {
         _view.openHomePage();
+        //desserializar para loginResponse?
+        //verificar se salva retorno no pref
+      }
+      else {
+        _view.showToast(S.of(_context).http_login_err_404);
       }
     });
+
   }
 
   String validateEmailText(String email) {

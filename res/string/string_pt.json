@@ -1,14 +1,23 @@
 {
-  "hello":"Olá",
-  "title":"Hello world App",
-  "login": "Entrar",
   "email":"E-mail",
   "email_required":"E-mail é obrigatório",
   "email_invalid":"E-mail é inválido",
-  "signup": "Criar conta",
+
+  "go":"Ir",
+
+  "hello":"Olá",
+  "http_login_err_404": "Erro ao conectar com o servidor",
+
+  "login": "Entrar",
+
   "password":"Senha",
   "password_required":"Senha é obrigatório",
   "password_forgot":"Esqueci minha senha",
-  "wait":"Aguarde...",
-  "go":"Ir"
+
+  "signup": "Criar conta",
+  "system": "T 30",
+
+  "title":"Hello world App",
+
+  "wait":"Aguarde..."
 }

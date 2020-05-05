@@ -1,14 +1,23 @@
 {
-  "hello":"Hello",
-  "title":"Hello world App",
-  "login": "Sign in",
   "email":"E-mail",
   "email_required":"E-mail is required",
   "email_invalid":"E-mail is invalid",
-  "signup": "Sign up",
+
+  "go":"Ir",
+
+  "hello":"Hello",
+  "http_login_err_404": "Can't connect to the server",
+
+  "login": "Sign in",
+
   "password":"Password",
   "password_required":"Password is required",
   "password_forgot":"Forgot password?",
-  "wait":"Wait...",
-  "go":"Ir"
+
+  "signup": "Sign up",
+  "system": "T 30",
+
+  "title":"Hello world App",
+
+  "wait":"Wait..."
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 import 'package:t30/generated/i18n.dart';
 import 'package:t30/presenter/login/login_presenter.dart';
@@ -63,6 +64,20 @@ class LoginFormState extends State<LoginForm> implements LoginView {
     if (!_progressDialog.isShowing()) {
       _progressDialog.show();
     }
+  }
+
+
+  @override
+  showToast(String message) {
+    Fluttertoast.showToast(
+        msg: message,
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: MyColor.accentColor(),
+        textColor: MyColor.primaryColor(),
+        fontSize: 16.0
+    );
   }
 
   void _buildProgressDialog(BuildContext context) {
