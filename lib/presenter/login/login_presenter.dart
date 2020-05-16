@@ -1,7 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:t30/generated/i18n.dart';
-import 'package:t30/model/data/entity/login.dart';
-import 'package:t30/model/login_model.dart';
+import 'package:t30/model/login/entity/login.dart';
+import 'package:t30/model/login/login_model.dart';
+import 'package:t30/util/json_converter.dart';
 import 'package:t30/util/util.dart';
 import 'package:t30/view/login/login_view.dart';
 
@@ -9,6 +10,7 @@ abstract class LoginPresenter {
   set view(LoginView view) {}
 
   loginServer(String email, String password) {}
+  Future<Login> getLogin(){}
 
   loginGoogle() {}
 
@@ -34,12 +36,14 @@ class LoginPresenterImpl implements LoginPresenter {
   @override
   loginServer(String email, String password) {
     _view.showLoading();
+
     _model.loginServer(Login(email: email, password: password)).then((response) {
       _view.hideLoading();
       if (response.statusCode == 200) {
         _view.openHomePage();
-        //desserializar para loginResponse?
+        Login l = convertJsonToLogin(response.message);
         //verificar se salva retorno no pref
+        _model.saveLogin(l);
       }
       else {
         _view.showToast(S.of(_context).http_login_err_404);
@@ -47,6 +51,17 @@ class LoginPresenterImpl implements LoginPresenter {
     });
 
   }
+
+
+  @override
+  Future<Login> getLogin() {
+    return _model.getLogin();
+  }
+
+
+
+
+
 
   String validateEmailText(String email) {
     if (email.isEmpty) {

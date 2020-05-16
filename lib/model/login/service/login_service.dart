@@ -1,5 +1,5 @@
-import 'package:t30/model/data/entity/login.dart';
-import 'package:t30/model/data/service/entity/default_response.dart';
+import 'package:t30/model/login/entity/login.dart';
+import 'package:t30/model/data/service/default_response.dart';
 
 import 'login_service_impl.dart';
 

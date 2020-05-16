@@ -1,6 +1,6 @@
-import 'package:t30/model/data/service/entity/default_response.dart';
-import 'data/entity/gym.dart';
-import 'data/service/gym/gym_service.dart';
+import 'package:t30/model/data/service/default_response.dart';
+import 'entity/gym.dart';
+import 'service/gym_service.dart';
 
 abstract class GymModel {
   Future<DefaultResponse> save(Gym gym) {

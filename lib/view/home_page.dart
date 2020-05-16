@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:t30/generated/i18n.dart';
+import 'package:t30/model/login/entity/login.dart';
+import 'package:t30/model/login/prefs/login_pref.dart';
 import 'package:t30/util/my_color.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,45 +15,70 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("Welcome In SplashScreen Package"),
+        title: new Text(S.of(context).system_name),
         automaticallyImplyLeading: false,
       ),
-      body: Center(
-          child: Column(
-        children: <Widget>[
-          Text(
-            "Succeeded!",
-            style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0),
-          ),
-          Container(
-              child: Column(
-            children: <Widget>[
-              Image.asset('images/T30.png'),
-              Container(
-                  width: double.infinity,
-                  child: RaisedButton(
-                    color: MyColor.primaryColor(),
-                    textColor: MyColor.accentColor(),
-                    child: Text('Abrir Login'),
-                    onPressed: () {
-                      print('Button pressed!!');
-                    },
-                  )),
-              Container(
-                  width: double.infinity,
-                  child: RaisedButton(
-                    color: MyColor.primaryColor(),
-                    textColor: MyColor.accentColor(),
-                    child: Text('Cadastrar Professor'),
-                    onPressed: () {
-                      print('Cadastrar Professor Button pressed!!');
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Container(
+                height: MediaQuery.of(context).size.height * 0.30,
+                decoration: BoxDecoration(
+                  color: MyColor.color(MyColor.gray),
+                ),
+                child: Container(
+                  margin: const EdgeInsets.only(left: 20, right: 20),
+                  child: Image.asset('images/t30_logo_2.png'),
+                )),
+            Container(
+                width: double.infinity,
+                child: RaisedButton(
+                  color: MyColor.primaryColor(),
+                  textColor: MyColor.accentColor(),
+                  child: Text('Novo Teste'),
+                  onPressed: () {
+                    print('Cadastrar Professor Button pressed!!');
 //                      Navigator.push(context,MaterialPageRoute(builder: (context) => LoginPage()));
-                    },
-                  )),
-            ],
-          ))
-        ],
-      )),
+                  },
+                )),
+            Container(
+                width: double.infinity,
+                child: RaisedButton(
+                  color: MyColor.primaryColor(),
+                  textColor: MyColor.accentColor(),
+                  child: Text('Minhas Academias'),
+                  onPressed: () {
+                    print('Cadastrar Professor Button pressed!!');
+//                      Navigator.push(context,MaterialPageRoute(builder: (context) => LoginPage()));
+                  },
+                )),
+            Container(
+                width: double.infinity,
+                child: RaisedButton(
+                  color: MyColor.primaryColor(),
+                  textColor: MyColor.accentColor(),
+                  child: Text('Últimos Teste'),
+                  onPressed: () {
+                    print('Cadastrar Professor Button pressed!!');
+//                      Navigator.push(context,MaterialPageRoute(builder: (context) => LoginPage()));
+                  },
+                )),
+            Container(
+                width: double.infinity,
+                child: RaisedButton(
+                  color: MyColor.primaryColor(),
+                  textColor: MyColor.accentColor(),
+                  child: Text('Limpar usuario'),
+                  onPressed: () {
+                    print('Cadastrar Professor Button pressed!!');
+                    LoginPref loginPref = LoginPrefFactory.newInstance();
+                    loginPref.saveLogin(Login());
+                      //Navigator.push(context,MaterialPageRoute(builder: (context) => LoginPage()));
+                  },
+                )),
+          ],
+        ),
+      ),
     );
   }
 }

@@ -1,8 +1,7 @@
 
-abstract class LoginView {
+import 'package:t30/view/base_view.dart';
+
+abstract class LoginView extends BaseView{
   openHomePage(){}
-  showLoading(){}
-  hideLoading(){}
-  showToast(String message){}
 }
 

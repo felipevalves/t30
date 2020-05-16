@@ -1,6 +1,6 @@
 
-import 'package:t30/model/data/entity/gym.dart';
-import '../entity/default_response.dart';
+import 'package:t30/model/gym/entity/gym.dart';
+import '../../data/service/default_response.dart';
 import 'gym_service.dart';
 
 
